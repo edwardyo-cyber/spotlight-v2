@@ -239,27 +239,40 @@ ul { list-style: none; }
   grid-template-columns: 1.8fr 1fr;
   gap: 16px;
 }
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2px;
+  margin-top: 60px;
+}
+.partners-grid img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: contain;
+  padding: 24px;
+  background: #0a0a0a;
+  transition: transform 0.4s, background 0.4s;
+  cursor: pointer;
+}
+.partners-grid img:hover {
+  background: #1a1a1a;
+  transform: scale(1.02);
+}
+@media (max-width: 768px) {
+  .partners-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 480px) {
+  .partners-grid { grid-template-columns: repeat(2, 1fr); }
+  .partners-grid img { padding: 16px; }
+}
+/* Legacy venue-card kept for compatibility */
 .venue-card {
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  background: #0a0a0a;
-  border: 1px solid rgba(255,255,255,0.08);
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
-.venue-card img {
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s;
-  max-width: 60%;
-  max-height: 60%;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  filter: brightness(0) invert(1);
-  opacity: 0.85;
-}
-.venue-card:hover img { transform: scale(1.06); opacity: 1; }
+.venue-card img { transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+.venue-card:hover img { transform: scale(1.03); }
 .venue-card__info {
   position: absolute;
   bottom: 0;
@@ -582,68 +595,48 @@ ul { list-style: none; }
 <!-- ==================== MARQUEE 02: Featured Venues© ==================== -->
 <div class="marquee-wrap">
   <div class="marquee-track" style="animation-duration: 25s;">
-    <span>Featured Venues©</span><span>Featured Venues©</span><span>Featured Venues©</span><span>Featured Venues©</span>
+    <span>Our Partners©</span><span>Our Partners©</span><span>Our Partners©</span><span>Our Partners©</span>
   </div>
 </div>
 
 <!-- ==================== SECTION 03: FEATURED VENUES ==================== -->
 <div class="section-label" id="venues">
-  <span>© Featured Venues 会場</span>
+  <span>© Our Partners パートナー</span>
   <span>(SLN® — 03)</span>
   <span>Dining Partners</span>
 </div>
 <section class="venues">
   <div class="venues__intro reveal">
-    <p class="venues__intro-text">Each partner restaurant becomes a creator's stage — curated for ambiance, plating, and content potential. Browse the network and book your next shoot.</p>
-    <a href="#cta" class="btn-outlined">S E E &nbsp; V E N U E S</a>
+    <p class="venues__intro-text">25+ restaurant brands across the DMV. Japanese, Chinese, Southeast Asian, boba, fine dining, fast casual — and growing. Every venue is a creator's stage.</p>
+    <a href="#cta" class="btn-outlined">J O I N &nbsp; N O W</a>
   </div>
 
-  <!-- Row 1: Large + Small -->
-  <div class="venues__row venues__row--ls reveal">
-    <div class="venue-card venue-card--wide">
-      <img src="images/logo-genki.jpg" alt="Genki Izakaya logo" loading="lazy">
-      <div class="venue-card__info">
-        <div><div class="venue-card__name">Genki Izakaya</div><div class="venue-card__loc">Fairfax, VA</div></div>
-        <div class="venue-card__num">(01)</div>
-      </div>
-    </div>
-    <div class="venue-card venue-card--tall">
-      <img src="images/logo-mui.jpg" alt="MUI Supper Club logo" loading="lazy">
-      <div class="venue-card__info">
-        <div><div class="venue-card__name">MUI Supper Club</div><div class="venue-card__loc">Bethesda, MD</div></div>
-        <div class="venue-card__num">(02)</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Row 2: Small + Large -->
-  <div class="venues__row venues__row--sl reveal">
-    <div class="venue-card venue-card--tall">
-      <img src="images/logo-southeast.jpg" alt="Southeast Impression logo" loading="lazy">
-      <div class="venue-card__info">
-        <div><div class="venue-card__name">Southeast Impression</div><div class="venue-card__loc">Fairfax, VA</div></div>
-        <div class="venue-card__num">(03)</div>
-      </div>
-    </div>
-    <div class="venue-card venue-card--wide">
-      <img src="images/logo-laoszechuan.png" alt="Lao Szechuan logo" loading="lazy">
-      <div class="venue-card__info">
-        <div><div class="venue-card__name">Lao Szechuan</div><div class="venue-card__loc">Bethesda, MD</div></div>
-        <div class="venue-card__num">(04)</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Row 3: Large + Small -->
-  <div class="venues__row venues__row--ls reveal">
-    <div class="venue-card venue-card--wide">
-      <img src="images/logo-gyusan.png" alt="Gyusan logo" loading="lazy">
-      <div class="venue-card__info">
-        <div><div class="venue-card__name">Gyusan</div><div class="venue-card__loc">Columbia, MD</div></div>
-        <div class="venue-card__num">(05)</div>
-      </div>
-    </div>
-
+  <div class="partners-grid reveal">
+    <img src="images/partners/01-gyuzo.png" alt="Gyuzo" loading="lazy">
+    <img src="images/partners/02-kanpai.png" alt="Kanpai" loading="lazy">
+    <img src="images/partners/03-kajiken.png" alt="Kajiken" loading="lazy">
+    <img src="images/partners/04-gyushige.png" alt="Gyu Shige" loading="lazy">
+    <img src="images/partners/05-genki.png" alt="Genki Izakaya" loading="lazy">
+    <img src="images/partners/06-gyusan.png" alt="Gyu San" loading="lazy">
+    <img src="images/partners/07-southeast.png" alt="Southeast Impression" loading="lazy">
+    <img src="images/partners/08-urbanhotpot.png" alt="Urban Hot Pot" loading="lazy">
+    <img src="images/partners/09-uzu.png" alt="UZU Revolving Sushi" loading="lazy">
+    <img src="images/partners/10-kyuramen.png" alt="Kyuramen" loading="lazy">
+    <img src="images/partners/11-wasai.png" alt="Wasai" loading="lazy">
+    <img src="images/partners/12-laoszechuan.png" alt="Lao Sze Chuan" loading="lazy">
+    <img src="images/partners/13-tigerdumplings.png" alt="Tiger Dumplings" loading="lazy">
+    <img src="images/partners/14-izakayanana.png" alt="Izakaya Nana" loading="lazy">
+    <img src="images/partners/15-biteme.png" alt="Bite Me" loading="lazy">
+    <img src="images/partners/16-santouka.png" alt="Santouka" loading="lazy">
+    <img src="images/partners/17-thespot.png" alt="The Spot" loading="lazy">
+    <img src="images/partners/18-akira.png" alt="Akira" loading="lazy">
+    <img src="images/partners/19-okaeri.png" alt="Okaeri" loading="lazy">
+    <img src="images/partners/20-ushitomiya.jpg" alt="Ushitomiya" loading="lazy">
+    <img src="images/partners/21-tabiji.jpg" alt="Tabiji" loading="lazy">
+    <img src="images/partners/22-snocream.jpg" alt="Sno Cream" loading="lazy">
+    <img src="images/partners/23-sakaki.png" alt="Sakaki Izakaya" loading="lazy">
+    <img src="images/partners/24-xfile.png" alt="X-File" loading="lazy">
+    <img src="images/partners/25-galaxyx.jpg" alt="Galaxy X" loading="lazy">
   </div>
 </section>
 
