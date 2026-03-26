@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+   ______                            __
+  / ____/___  ____ ___  ____  __  __/ /____  _____
+ / /   / __ \/ __ `__ \/ __ \/ / / / __/ _ \/ ___/
+/ /___/ /_/ / / / / / / /_/ / /_/ / /_/  __/ /
+\____/\____/_/ /_/ /_/ .___/\__,_/\__/\___/_/
+                    /_/
+        Created with Perplexity Computer
+        https://www.perplexity.ai/computer
+-->
+<meta name="generator" content="Perplexity Computer">
+<meta name="author" content="Perplexity Computer">
+<meta property="og:see_also" content="https://www.perplexity.ai/computer">
+<link rel="author" href="https://www.perplexity.ai/computer">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spotlight Creator Network — Your Stage. Your Audience. Your Growth.</title>
+<meta name="description" content="A creator-first platform where restaurants are the stage, not the star. Browse venues, book your stage, earn commissions, and host events.">
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+<style>
+/* ========== RESET & BASE ========== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body {
+  font-family: 'General Sans', -apple-system, sans-serif;
+  background: #000;
+  color: #fff;
+  overflow-x: hidden;
+  line-height: 1.55;
+  font-weight: 400;
+  font-size: 16px;
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; width: 100%; height: 100%; object-fit: cover; }
+ul { list-style: none; }
+
+/* ========== DESIGN TOKENS ========== */
+:root {
+  --black: #000000;
+  --near-black: #0a0a0a;
+  --card-bg: #111;
+  --white: #ffffff;
+  --white-70: rgba(255,255,255,0.7);
+  --white-50: rgba(255,255,255,0.5);
+  --white-30: rgba(255,255,255,0.3);
+  --white-15: rgba(255,255,255,0.15);
+  --white-10: rgba(255,255,255,0.1);
+  --padding-x: clamp(24px, 5vw, 80px);
+  --section-gap: clamp(100px, 12vw, 200px);
+}
+
+/* ========== UTILITY ========== */
+.tracked { letter-spacing: 0.2em; text-transform: uppercase; }
+.tracked-wide { letter-spacing: 0.3em; text-transform: uppercase; }
+.label-sm { font-size: clamp(9px, 1vw, 11px); letter-spacing: 0.15em; text-transform: uppercase; color: var(--white-70); font-weight: 500; }
+.muted { color: var(--white-70); }
+.muted-50 { color: var(--white-50); }
+
+/* ========== NAVIGATION ========== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 20px var(--padding-x);
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--white-15);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.navbar.hidden { transform: translateY(-100%); }
+.navbar__logo { font-size: 16px; font-weight: 700; letter-spacing: 0.02em; white-space: nowrap; }
+.navbar__links { display: flex; gap: 24px; font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--white-70); }
+.navbar__links a { transition: color 0.3s; }
+.navbar__links a:hover { color: #fff; }
+.navbar__links .dot { color: var(--white-30); }
+.navbar__info { text-align: right; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white-50); line-height: 1.6; }
+
+/* ========== SECTION DIVIDER LABELS ========== */
+.section-label {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 14px var(--padding-x);
+  border-top: 1px solid var(--white-15);
+  border-bottom: 1px solid var(--white-15);
+  font-size: clamp(9px, 0.9vw, 11px);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--white-50);
+  font-weight: 500;
+}
+.section-label span:nth-child(2) { text-align: center; }
+.section-label span:nth-child(3) { text-align: right; }
+
+/* ========== BUTTONS ========== */
+.btn-outlined {
+  display: inline-block;
+  padding: 16px 40px;
+  border: 1px solid #fff;
+  background: transparent;
+  color: #fff;
+  font-family: 'General Sans', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background 0.35s, color 0.35s;
+  white-space: nowrap;
+}
+.btn-outlined:hover { background: #fff; color: #000; }
+.btn-outlined--large { padding: 22px 60px; font-size: 13px; }
+
+/* ========== MARQUEE ========== */
+.marquee-wrap {
+  overflow: hidden;
+  padding: 40px 0;
+  border-top: 1px solid var(--white-15);
+  border-bottom: 1px solid var(--white-15);
+}
+.marquee-track {
+  display: flex;
+  white-space: nowrap;
+  animation: marqueeScroll 20s linear infinite;
+  width: max-content;
+}
+.marquee-track span {
+  font-size: clamp(80px, 18vw, 260px);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 0.85;
+  padding-right: 80px;
+  color: #fff;
+}
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ========== HERO ========== */
+.hero {
+  padding-top: clamp(120px, 15vw, 180px);
+  padding-left: var(--padding-x);
+  padding-right: var(--padding-x);
+  padding-bottom: 0;
+}
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: clamp(30px, 4vw, 60px);
+  align-items: start;
+}
+.hero__headline {
+  font-size: clamp(44px, 6.2vw, 94px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  margin-top: clamp(20px, 4vw, 60px);
+}
+.hero__image {
+  width: 100%;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+}
+.hero__image img { transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+.hero__image:hover img { transform: scale(1.03); }
+.hero__tags {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: clamp(48px, 6vw, 80px);
+  padding-top: 20px;
+  border-top: 1px solid var(--white-15);
+  gap: 0;
+}
+.hero__tags span {
+  font-size: clamp(10px, 1vw, 13px);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--white-70);
+  padding: 8px 0;
+  flex: 1;
+  text-align: center;
+  border-right: 1px solid var(--white-15);
+}
+.hero__tags span:last-child { border-right: none; }
+
+/* ========== ABOUT (02) ========== */
+.about { padding: var(--section-gap) var(--padding-x); }
+.about__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 6vw, 100px);
+}
+.about__lead {
+  font-size: clamp(22px, 2.8vw, 36px);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+.about__item { padding: 28px 0; border-bottom: 1px solid var(--white-15); }
+.about__item:first-child { border-top: 1px solid var(--white-15); }
+.about__item h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+.about__item p { font-size: 15px; color: var(--white-70); line-height: 1.55; }
+.about__image {
+  grid-column: 1 / -1;
+  margin-top: clamp(60px, 8vw, 120px);
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+}
+.about__image img { transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+.about__image:hover img { transform: scale(1.03); }
+
+/* ========== VENUES (03) ========== */
+.venues { padding: 0 var(--padding-x) var(--section-gap); }
+.venues__intro {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: clamp(40px, 5vw, 80px) 0;
+}
+.venues__intro-text {
+  max-width: 500px;
+  font-size: clamp(16px, 1.4vw, 20px);
+  color: var(--white-70);
+  line-height: 1.6;
+}
+.venues__grid {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr;
+  gap: 16px;
+}
+.venue-card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+.venue-card img { transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+.venue-card:hover img { transform: scale(1.03); }
+.venue-card__info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  background: linear-gradient(transparent, rgba(0,0,0,0.7));
+}
+.venue-card__name { font-size: 15px; font-weight: 600; }
+.venue-card__loc { font-size: 11px; color: var(--white-50); margin-top: 2px; letter-spacing: 0.05em; }
+.venue-card__num { font-size: 12px; color: var(--white-50); font-weight: 500; }
+.venue-card--tall { aspect-ratio: 3/4; }
+.venue-card--wide { aspect-ratio: 16/9; }
+.venue-card--std { aspect-ratio: 4/3; }
+/* Row layout alternating large/small */
+.venues__row { display: grid; gap: 16px; margin-bottom: 16px; }
+.venues__row--ls { grid-template-columns: 1.85fr 1fr; }
+.venues__row--sl { grid-template-columns: 1fr 1.85fr; }
+
+/* ========== PROCESS (04) ========== */
+.process { padding: 0 var(--padding-x) var(--section-gap); }
+.process__list { border-top: 1px solid var(--white-15); }
+.process__item {
+  display: grid;
+  grid-template-columns: 100px 1fr 1.2fr;
+  gap: 24px;
+  align-items: center;
+  padding: clamp(28px, 3vw, 44px) 0;
+  border-bottom: 1px solid var(--white-15);
+}
+.process__num {
+  font-size: clamp(36px, 4vw, 60px);
+  font-weight: 800;
+  color: var(--white-30);
+  letter-spacing: -0.03em;
+}
+.process__title { font-size: clamp(18px, 2vw, 28px); font-weight: 700; }
+.process__desc { font-size: clamp(14px, 1.1vw, 16px); color: var(--white-70); line-height: 1.55; }
+.process__callout {
+  margin-top: clamp(40px, 5vw, 80px);
+  padding: clamp(32px, 4vw, 60px);
+  border: 1px solid var(--white-15);
+  text-align: center;
+  font-size: clamp(18px, 2.2vw, 28px);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* ========== STATS (05) ========== */
+.stats { padding: 0 var(--padding-x); margin-bottom: var(--section-gap); }
+.stats__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--white-15);
+  border-bottom: 1px solid var(--white-15);
+}
+.stats__item {
+  padding: clamp(36px, 5vw, 70px) clamp(16px, 2vw, 32px);
+  border-right: 1px solid var(--white-15);
+  text-align: center;
+}
+.stats__item:last-child { border-right: none; }
+.stats__number {
+  font-size: clamp(36px, 5vw, 72px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+.stats__label {
+  font-size: clamp(10px, 0.9vw, 13px);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--white-50);
+  font-weight: 500;
+}
+
+/* ========== TIERS (06) ========== */
+.tiers { padding: 0 var(--padding-x) var(--section-gap); }
+.tiers__image {
+  width: 100%;
+  aspect-ratio: 16/7;
+  overflow: hidden;
+  margin-bottom: clamp(48px, 6vw, 80px);
+}
+.tiers__image img { transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+.tiers__image:hover img { transform: scale(1.03); }
+.tiers__list { border-top: 1px solid var(--white-15); }
+.tier-row {
+  display: grid;
+  grid-template-columns: 200px 160px 1fr;
+  gap: 24px;
+  align-items: center;
+  padding: clamp(24px, 3vw, 40px) 0;
+  border-bottom: 1px solid var(--white-15);
+}
+.tier-row__name { font-size: clamp(18px, 2vw, 24px); font-weight: 700; }
+.tier-row__range { font-size: 13px; color: var(--white-50); letter-spacing: 0.08em; text-transform: uppercase; }
+.tier-row__perks { font-size: 15px; color: var(--white-70); line-height: 1.5; }
+
+/* ========== EVENTS (07) ========== */
+.events { padding: 0 var(--padding-x) var(--section-gap); }
+.events__image {
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  margin-bottom: clamp(48px, 6vw, 80px);
+}
+.events__image img { transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+.events__image:hover img { transform: scale(1.03); }
+.events__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 6vw, 100px);
+}
+.events__desc {
+  font-size: clamp(20px, 2.4vw, 32px);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+.events__list li {
+  font-size: clamp(12px, 1.1vw, 14px);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--white-15);
+  color: var(--white-70);
+  font-weight: 500;
+}
+.events__list li:first-child { border-top: 1px solid var(--white-15); }
+
+/* ========== CTA (08) ========== */
+.cta-section {
+  padding: var(--section-gap) var(--padding-x);
+  text-align: center;
+  border-top: 1px solid var(--white-15);
+}
+.cta-section__sub {
+  margin-top: 28px;
+  font-size: clamp(14px, 1.3vw, 18px);
+  color: var(--white-50);
+  font-weight: 400;
+}
+
+/* ========== FOOTER ========== */
+.footer { padding: var(--section-gap) var(--padding-x) 0; border-top: 1px solid var(--white-15); }
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  padding-bottom: clamp(60px, 8vw, 120px);
+}
+.footer__heading {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--white-50);
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+.footer__links { display: flex; flex-direction: column; gap: 14px; }
+.footer__links a {
+  font-size: 12px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--white-70);
+  transition: color 0.3s;
+}
+.footer__links a:hover { color: #fff; }
+.footer__year-wrap {
+  overflow: hidden;
+  line-height: 0.8;
+  padding: 0;
+}
+.footer__year {
+  font-size: clamp(200px, 28vw, 420px);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 0.82;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+}
+.footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px var(--padding-x);
+  border-top: 1px solid var(--white-15);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--white-50);
+}
+.footer__bottom a { color: var(--white-50); transition: color 0.3s; }
+.footer__bottom a:hover { color: #fff; }
+
+/* ========== SCROLL REVEAL ========== */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 900px) {
+  .navbar { grid-template-columns: 1fr 1fr; padding: 14px var(--padding-x); }
+  .navbar__links { display: none; }
+  .navbar__info { font-size: 9px; }
+  .hero__grid { grid-template-columns: 1fr; }
+  .hero__image { max-width: 320px; aspect-ratio: 3/4; margin-top: 32px; }
+  .hero__tags { flex-direction: column; }
+  .hero__tags span { text-align: left; border-right: none; border-bottom: 1px solid var(--white-15); }
+  .hero__tags span:last-child { border-bottom: none; }
+  .about__grid { grid-template-columns: 1fr; }
+  .venues__row--ls, .venues__row--sl { grid-template-columns: 1fr; }
+  .process__item { grid-template-columns: 60px 1fr; }
+  .process__desc { grid-column: 1 / -1; }
+  .stats__grid { grid-template-columns: 1fr 1fr; }
+  .stats__item:nth-child(2) { border-right: none; }
+  .tier-row { grid-template-columns: 1fr; gap: 8px; }
+  .events__grid { grid-template-columns: 1fr; }
+  .footer__grid { grid-template-columns: 1fr; gap: 40px; }
+  .footer__bottom { flex-direction: column; gap: 12px; text-align: center; }
+}
+
+@media (max-width: 600px) {
+  .hero__headline { font-size: clamp(32px, 10vw, 52px); }
+  .stats__grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ==================== NAVIGATION ==================== -->
+<nav class="navbar" id="navbar">
+  <div class="navbar__logo">Spotlight®</div>
+  <div class="navbar__links">
+    <a href="#venues">V e n u e s</a>
+    <span class="dot">·</span>
+    <a href="#events">E v e n t s</a>
+    <span class="dot">·</span>
+    <a href="#tiers">C r e a t o r s</a>
+    <span class="dot">·</span>
+    <a href="#cta">C o n t a c t</a>
+  </div>
+  <div class="navbar__info">
+    Based in Washington DC<br>Creator Network + Events
+  </div>
+</nav>
+
+<!-- ==================== SECTION 01: HERO ==================== -->
+<section class="hero">
+  <div class="hero__grid">
+    <div>
+      <h1 class="hero__headline reveal">
+        Culinary Stories<br>
+        and Moments that<br>
+        Connect and Leave a<br>
+        Bold Impression.
+      </h1>
+      <div class="hero__tags reveal">
+        <span>Creator Partnerships</span>
+        <span>Event Hosting</span>
+        <span>Performance Marketing</span>
+        <span>Brand Amplification</span>
+      </div>
+    </div>
+    <div class="hero__image reveal">
+      <img src="images/palmer-hero-portrait.jpg" alt="Fashion-editorial food creator filming in dark restaurant" loading="eager">
+    </div>
+  </div>
+</section>
+
+<!-- ==================== MARQUEE 01: Spotlight™ ==================== -->
+<div class="marquee-wrap" style="margin-top: clamp(80px, 10vw, 140px);">
+  <div class="marquee-track">
+    <span>Spotlight™</span><span>Spotlight™</span><span>Spotlight™</span><span>Spotlight™</span><span>Spotlight™</span><span>Spotlight™</span>
+  </div>
+</div>
+
+<!-- ==================== SECTION 02: ABOUT ==================== -->
+<div class="section-label">
+  <span>© About 概要</span>
+  <span>(SLN® — 02)</span>
+  <span>Creator Platform</span>
+</div>
+<section class="about" id="about">
+  <div class="about__grid">
+    <div class="reveal">
+      <p class="about__lead">A platform built for food creators. Restaurants provide the venue, the food, the ambiance. The show belongs to the creator.</p>
+    </div>
+    <div class="reveal">
+      <div class="about__item">
+        <h3>Your Stage</h3>
+        <p>40+ restaurant venues as your content studio, event space, and growth engine.</p>
+      </div>
+      <div class="about__item">
+        <h3>Your Growth</h3>
+        <p>Analytics, cross-promotion, paid amplification, and a verified media kit.</p>
+      </div>
+      <div class="about__item">
+        <h3>Your Events</h3>
+        <p>Host your own events at partner restaurants. Your name, top billing.</p>
+      </div>
+    </div>
+    <div class="about__image reveal">
+      <img src="images/palmer-project-1.jpg" alt="Dramatic Japanese omakase counter with chefs" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ==================== MARQUEE 02: Featured Venues© ==================== -->
+<div class="marquee-wrap">
+  <div class="marquee-track" style="animation-duration: 25s;">
+    <span>Featured Venues©</span><span>Featured Venues©</span><span>Featured Venues©</span><span>Featured Venues©</span>
+  </div>
+</div>
+
+<!-- ==================== SECTION 03: FEATURED VENUES ==================== -->
+<div class="section-label" id="venues">
+  <span>© Featured Venues 会場</span>
+  <span>(SLN® — 03)</span>
+  <span>Dining Partners</span>
+</div>
+<section class="venues">
+  <div class="venues__intro reveal">
+    <p class="venues__intro-text">Each partner restaurant becomes a creator's stage — curated for ambiance, plating, and content potential. Browse the network and book your next shoot.</p>
+    <a href="#cta" class="btn-outlined">S E E &nbsp; V E N U E S</a>
+  </div>
+
+  <!-- Row 1: Large + Small -->
+  <div class="venues__row venues__row--ls reveal">
+    <div class="venue-card venue-card--wide">
+      <img src="images/palmer-izakaya-bar.jpg" alt="Atmospheric izakaya bar with lanterns" loading="lazy">
+      <div class="venue-card__info">
+        <div><div class="venue-card__name">Izakaya Nana</div><div class="venue-card__loc">Arlington, VA</div></div>
+        <div class="venue-card__num">(01)</div>
+      </div>
+    </div>
+    <div class="venue-card venue-card--tall">
+      <img src="images/palmer-project-4.jpg" alt="Wagyu steak being sliced with fire sparks" loading="lazy">
+      <div class="venue-card__info">
+        <div><div class="venue-card__name">Kyū Steakhouse</div><div class="venue-card__loc">DC Georgetown</div></div>
+        <div class="venue-card__num">(02)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 2: Small + Large -->
+  <div class="venues__row venues__row--sl reveal">
+    <div class="venue-card venue-card--tall">
+      <img src="images/palmer-boba.jpg" alt="Bubble tea being poured mid-splash on black background" loading="lazy">
+      <div class="venue-card__info">
+        <div><div class="venue-card__name">Gong Cha</div><div class="venue-card__loc">Fairfax, VA</div></div>
+        <div class="venue-card__num">(03)</div>
+      </div>
+    </div>
+    <div class="venue-card venue-card--wide">
+      <img src="images/palmer-project-5.jpg" alt="Hands crafting a dumpling with flour dust in light" loading="lazy">
+      <div class="venue-card__info">
+        <div><div class="venue-card__name">iPanda Dumpling</div><div class="venue-card__loc">Rockville, MD</div></div>
+        <div class="venue-card__num">(04)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 3: Large + Small -->
+  <div class="venues__row venues__row--ls reveal">
+    <div class="venue-card venue-card--wide">
+      <img src="images/palmer-project-2.jpg" alt="Editorial ramen bowl on dark background" loading="lazy">
+      <div class="venue-card__info">
+        <div><div class="venue-card__name">Momo Ramen</div><div class="venue-card__loc">DC Dupont Circle</div></div>
+        <div class="venue-card__num">(05)</div>
+      </div>
+    </div>
+    <div class="venue-card venue-card--std">
+      <img src="images/palmer-plating.jpg" alt="Chef plating fine dining dish with tweezers" loading="lazy">
+      <div class="venue-card__info">
+        <div><div class="venue-card__name">Lotus Dim Sum</div><div class="venue-card__loc">Annandale, VA</div></div>
+        <div class="venue-card__num">(06)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SECTION 04: HOW IT WORKS ==================== -->
+<div class="section-label">
+  <span>© Process プロセス</span>
+  <span>(SLN® — 04)</span>
+  <span>Creator Journey</span>
+</div>
+<section class="process">
+  <div class="process__list">
+    <div class="process__item reveal">
+      <div class="process__num">01</div>
+      <div class="process__title">Browse Venues</div>
+      <div class="process__desc">Filter by vibe, cuisine, location. See what each restaurant offers creators.</div>
+    </div>
+    <div class="process__item reveal">
+      <div class="process__num">02</div>
+      <div class="process__title">Book Your Stage</div>
+      <div class="process__desc">One-tap booking. Get a comp'd meal and create content on your terms.</div>
+    </div>
+    <div class="process__item reveal">
+      <div class="process__num">03</div>
+      <div class="process__title">Post & Earn</div>
+      <div class="process__desc">Share content. Earn commissions on every reservation and order you drive.</div>
+    </div>
+    <div class="process__item reveal">
+      <div class="process__num">04</div>
+      <div class="process__title">Host Events</div>
+      <div class="process__desc">Create your own events at the venue. Sell tickets. Build community.</div>
+    </div>
+    <div class="process__item reveal">
+      <div class="process__num">05</div>
+      <div class="process__title">Grow & Level Up</div>
+      <div class="process__desc">Track your growth. Build your portfolio. Climb tiers. Unlock more rewards.</div>
+    </div>
+  </div>
+  <div class="process__callout reveal">
+    The creator never pays. Spotlight is free for creators. Always.
+  </div>
+</section>
+
+<!-- ==================== SECTION 05: STATS ==================== -->
+<div class="section-label">
+  <span>© Numbers 数字</span>
+  <span>(SLN® — 05)</span>
+  <span>Impact</span>
+</div>
+<section class="stats">
+  <div class="stats__grid">
+    <div class="stats__item reveal">
+      <div class="stats__number">35+</div>
+      <div class="stats__label">Restaurant Brands</div>
+    </div>
+    <div class="stats__item reveal">
+      <div class="stats__number">90+</div>
+      <div class="stats__label">Locations</div>
+    </div>
+    <div class="stats__item reveal">
+      <div class="stats__number">5–15%</div>
+      <div class="stats__label">Creator Commissions</div>
+    </div>
+    <div class="stats__item reveal">
+      <div class="stats__number">0–100</div>
+      <div class="stats__label">CSS Performance Score</div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SECTION 06: CREATOR TIERS ==================== -->
+<div class="section-label" id="tiers">
+  <span>© Tiers ティア</span>
+  <span>(SLN® — 06)</span>
+  <span>Levels</span>
+</div>
+<section class="tiers">
+  <div class="tiers__image reveal">
+    <img src="images/palmer-creator-2.jpg" alt="Stylish creator in leather jacket at a bar" loading="lazy">
+  </div>
+  <div class="tiers__list">
+    <div class="tier-row reveal">
+      <div class="tier-row__name">Newcomer</div>
+      <div class="tier-row__range">First 3 visits</div>
+      <div class="tier-row__perks">Venue access, basic analytics, community</div>
+    </div>
+    <div class="tier-row reveal">
+      <div class="tier-row__name">Creator</div>
+      <div class="tier-row__range">CSS 1–49</div>
+      <div class="tier-row__perks">Unlimited visits, 5% commissions, event access</div>
+    </div>
+    <div class="tier-row reveal">
+      <div class="tier-row__name">Spotlight Star</div>
+      <div class="tier-row__range">CSS 50–79</div>
+      <div class="tier-row__perks">Priority booking, 10% commissions, content licensing, paid boost</div>
+    </div>
+    <div class="tier-row reveal">
+      <div class="tier-row__name">Headliner</div>
+      <div class="tier-row__range">CSS 80–100</div>
+      <div class="tier-row__perks">Monthly retainer, 15% commissions, event budget, PR support</div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SECTION 07: EVENTS ==================== -->
+<div class="section-label" id="events">
+  <span>© Events イベント</span>
+  <span>(SLN® — 07)</span>
+  <span>Experiences</span>
+</div>
+<section class="events">
+  <div class="events__image reveal">
+    <img src="images/palmer-project-3.jpg" alt="Candlelit dinner event with diverse creators" loading="lazy">
+  </div>
+  <div class="events__grid">
+    <div class="reveal">
+      <p class="events__desc">Host it your way. Creators don't just post about restaurants — they host experiences at them. Design the concept, Spotlight matches you to a venue, both promote, and you keep top billing.</p>
+    </div>
+    <div class="reveal">
+      <ul class="events__list">
+        <li>Ramen Wars: Blind Taste Test</li>
+        <li>TikTok Tuesdays at Izakaya Nana</li>
+        <li>Gong Cha Mixology Lab</li>
+        <li>Date Night Supper Club</li>
+        <li>Creator Brunch Club</li>
+        <li>Dumpling & Doodles at iPanda</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SECTION 08: CTA ==================== -->
+<section class="cta-section" id="cta">
+  <a href="#" class="btn-outlined btn-outlined--large reveal">J O I N &nbsp; S P O T L I G H T</a>
+  <p class="cta-section__sub reveal">The restaurant is the stage. The creator is the star.</p>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer">
+  <div class="footer__grid">
+    <div>
+      <div class="footer__heading">Quick Links</div>
+      <div class="footer__links">
+        <a href="#venues">V e n u e s</a>
+        <a href="#events">E v e n t s</a>
+        <a href="#tiers">C r e a t o r s</a>
+        <a href="#cta">C o n t a c t</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer__heading">Networks</div>
+      <div class="footer__links">
+        <a href="#" target="_blank" rel="noopener noreferrer">I n s t a g r a m</a>
+        <a href="#" target="_blank" rel="noopener noreferrer">T i k T o k</a>
+        <a href="#" target="_blank" rel="noopener noreferrer">X&nbsp;&nbsp;(&nbsp;T w i t t e r&nbsp;)</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer__year-wrap">
+    <div class="footer__year reveal">©2026</div>
+  </div>
+  <div class="footer__bottom">
+    <span>© 2026 Ivea Concepts · Spotlight Creator Network</span>
+    <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer">Created with Perplexity Computer</a>
+  </div>
+</footer>
+
+<!-- ==================== SCRIPTS ==================== -->
+<script>
+// === Navbar hide on scroll down, show on scroll up ===
+(function() {
+  const navbar = document.getElementById('navbar');
+  let lastY = 0;
+  let ticking = false;
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      window.requestAnimationFrame(function() {
+        const y = window.scrollY;
+        if (y > lastY && y > 100) {
+          navbar.classList.add('hidden');
+        } else {
+          navbar.classList.remove('hidden');
+        }
+        lastY = y;
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+})();
+
+// === Scroll reveal via IntersectionObserver ===
+(function() {
+  const els = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  els.forEach(function(el) { observer.observe(el); });
+})();
+</script>
+
+</body>
+</html>
