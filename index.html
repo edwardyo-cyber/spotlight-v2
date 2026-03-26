@@ -243,9 +243,23 @@ ul { list-style: none; }
   position: relative;
   overflow: hidden;
   cursor: pointer;
+  background: #0a0a0a;
+  border: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.venue-card img { transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
-.venue-card:hover img { transform: scale(1.03); }
+.venue-card img {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s;
+  max-width: 60%;
+  max-height: 60%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.85;
+}
+.venue-card:hover img { transform: scale(1.06); opacity: 1; }
 .venue-card__info {
   position: absolute;
   bottom: 0;
@@ -587,14 +601,14 @@ ul { list-style: none; }
   <!-- Row 1: Large + Small -->
   <div class="venues__row venues__row--ls reveal">
     <div class="venue-card venue-card--wide">
-      <img src="images/v2-genki.jpg" alt="Genki Izakaya neon-lit yakitori and sushi bar" loading="lazy">
+      <img src="images/logo-genki.jpg" alt="Genki Izakaya logo" loading="lazy">
       <div class="venue-card__info">
         <div><div class="venue-card__name">Genki Izakaya</div><div class="venue-card__loc">Fairfax, VA</div></div>
         <div class="venue-card__num">(01)</div>
       </div>
     </div>
     <div class="venue-card venue-card--tall">
-      <img src="images/v2-mui.jpg" alt="MUI Supper Club fine dining omakase" loading="lazy">
+      <img src="images/logo-mui.jpg" alt="MUI Supper Club logo" loading="lazy">
       <div class="venue-card__info">
         <div><div class="venue-card__name">MUI Supper Club</div><div class="venue-card__loc">Bethesda, MD</div></div>
         <div class="venue-card__num">(02)</div>
@@ -605,14 +619,14 @@ ul { list-style: none; }
   <!-- Row 2: Small + Large -->
   <div class="venues__row venues__row--sl reveal">
     <div class="venue-card venue-card--tall">
-      <img src="images/v2-southeast.jpg" alt="Southeast Impression vibrant Asian cuisine spread" loading="lazy">
+      <img src="images/logo-southeast.jpg" alt="Southeast Impression logo" loading="lazy">
       <div class="venue-card__info">
         <div><div class="venue-card__name">Southeast Impression</div><div class="venue-card__loc">Fairfax, VA</div></div>
         <div class="venue-card__num">(03)</div>
       </div>
     </div>
     <div class="venue-card venue-card--wide">
-      <img src="images/v2-laoszechuan.jpg" alt="Lao Szechuan Peking duck being carved" loading="lazy">
+      <img src="images/logo-laoszechuan.png" alt="Lao Szechuan logo" loading="lazy">
       <div class="venue-card__info">
         <div><div class="venue-card__name">Lao Szechuan</div><div class="venue-card__loc">Bethesda, MD</div></div>
         <div class="venue-card__num">(04)</div>
@@ -623,7 +637,7 @@ ul { list-style: none; }
   <!-- Row 3: Large + Small -->
   <div class="venues__row venues__row--ls reveal">
     <div class="venue-card venue-card--wide">
-      <img src="images/v2-gyusan.jpg" alt="Gyusan premium Japanese BBQ yakiniku with sushi" loading="lazy">
+      <img src="images/logo-gyusan.png" alt="Gyusan logo" loading="lazy">
       <div class="venue-card__info">
         <div><div class="venue-card__name">Gyusan</div><div class="venue-card__loc">Columbia, MD</div></div>
         <div class="venue-card__num">(05)</div>
