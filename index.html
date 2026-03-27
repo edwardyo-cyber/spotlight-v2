@@ -474,15 +474,45 @@ ul { list-style: none; }
 .footer__bottom a:hover { color: #fff; }
 
 /* ========== SCROLL REVEAL ========== */
+/* ========== DYNAMIC REVEAL ANIMATIONS ========== */
 .reveal {
   opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), filter 0.9s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .reveal.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: none !important;
+  filter: none !important;
 }
+
+/* Type 1: Slide up (default) */
+.reveal--up { transform: translateY(60px); }
+/* Type 2: Slide from left */
+.reveal--left { transform: translateX(-80px); }
+/* Type 3: Slide from right */
+.reveal--right { transform: translateX(80px); }
+/* Type 4: Scale up from small */
+.reveal--scale { transform: scale(0.85); }
+/* Type 5: Fade only (no movement) */
+.reveal--fade { transform: none; }
+/* Type 6: Slide up + rotate slight */
+.reveal--tilt { transform: translateY(50px) rotate(2deg); }
+/* Type 7: Slide down */
+.reveal--down { transform: translateY(-50px); }
+/* Type 8: Blur in */
+.reveal--blur { transform: translateY(20px); filter: blur(8px); }
+/* Type 9: Scale + slide up */
+.reveal--zoom { transform: translateY(40px) scale(0.92); }
+/* Type 10: Slide from left + rotate */
+.reveal--swing { transform: translateX(-60px) rotate(-3deg); }
+
+/* Stagger delays for child elements */
+.reveal--d1 { transition-delay: 0.1s; }
+.reveal--d2 { transition-delay: 0.2s; }
+.reveal--d3 { transition-delay: 0.3s; }
+.reveal--d4 { transition-delay: 0.4s; }
+.reveal--d5 { transition-delay: 0.5s; }
+.reveal--d6 { transition-delay: 0.6s; }
 
 /* ========== RESPONSIVE ========== */
 @media (max-width: 900px) {
@@ -882,28 +912,28 @@ ul { list-style: none; }
     <a href="#cta" class="btn-outlined">J O I N &nbsp; N O W</a>
   </div>
 
-  <div class="partners-grid reveal">
-    <img src="images/partners/02-kanpai.png" alt="Kanpai" loading="lazy">
-    <img src="images/partners/03-kajiken.png" alt="Kajiken" loading="lazy">
-    <img src="images/partners/04-gyushige.png" alt="Gyu Shige" loading="lazy">
-    <img src="images/partners/05-genki.png" alt="Genki Izakaya" loading="lazy">
-    <img src="images/partners/06-gyusan.png" alt="Gyu San" loading="lazy">
-    <img src="images/partners/07-southeast.png" alt="Southeast Impression" loading="lazy">
-    <img src="images/partners/08-urbanhotpot.png" alt="Urban Hot Pot" loading="lazy">
-    <img src="images/partners/10-kyuramen.png" alt="Kyuramen" loading="lazy">
-    <img src="images/partners/11-wasai.png" alt="Wasai" loading="lazy">
-    <img src="images/partners/12-laoszechuan.png" alt="Lao Sze Chuan" loading="lazy">
-    <img src="images/partners/14-izakayanana.png" alt="Izakaya Nana" loading="lazy">
-    <img src="images/partners/15-biteme.png" alt="Bite Me" loading="lazy">
-    <img src="images/partners/16-santouka.png" alt="Santouka" loading="lazy">
-    <img src="images/partners/18-akira.png" alt="Akira" loading="lazy">
-    <img src="images/partners/19-okaeri.png" alt="Okaeri" loading="lazy">
-    <img src="images/partners/20-ushitomiya.jpg" alt="Ushitomiya" loading="lazy">
-    <img src="images/partners/21-tabiji.jpg" alt="Tabiji" loading="lazy">
-    <img src="images/partners/22-snocream.jpg" alt="Sno Cream" loading="lazy">
-    <img src="images/partners/23-sakaki.png" alt="Sakaki Izakaya" loading="lazy">
-    <img src="images/partners/24-xfile.png" alt="X-File" loading="lazy">
-    <img src="images/partners/25-galaxyx.jpg" alt="Galaxy X" loading="lazy">
+  <div class="partners-grid">
+    <img class="reveal" src="images/partners/02-kanpai.png" alt="Kanpai" loading="lazy">
+    <img class="reveal" src="images/partners/03-kajiken.png" alt="Kajiken" loading="lazy">
+    <img class="reveal" src="images/partners/04-gyushige.png" alt="Gyu Shige" loading="lazy">
+    <img class="reveal" src="images/partners/05-genki.png" alt="Genki Izakaya" loading="lazy">
+    <img class="reveal" src="images/partners/06-gyusan.png" alt="Gyu San" loading="lazy">
+    <img class="reveal" src="images/partners/07-southeast.png" alt="Southeast Impression" loading="lazy">
+    <img class="reveal" src="images/partners/08-urbanhotpot.png" alt="Urban Hot Pot" loading="lazy">
+    <img class="reveal" src="images/partners/10-kyuramen.png" alt="Kyuramen" loading="lazy">
+    <img class="reveal" src="images/partners/11-wasai.png" alt="Wasai" loading="lazy">
+    <img class="reveal" src="images/partners/12-laoszechuan.png" alt="Lao Sze Chuan" loading="lazy">
+    <img class="reveal" src="images/partners/14-izakayanana.png" alt="Izakaya Nana" loading="lazy">
+    <img class="reveal" src="images/partners/15-biteme.png" alt="Bite Me" loading="lazy">
+    <img class="reveal" src="images/partners/16-santouka.png" alt="Santouka" loading="lazy">
+    <img class="reveal" src="images/partners/18-akira.png" alt="Akira" loading="lazy">
+    <img class="reveal" src="images/partners/19-okaeri.png" alt="Okaeri" loading="lazy">
+    <img class="reveal" src="images/partners/20-ushitomiya.jpg" alt="Ushitomiya" loading="lazy">
+    <img class="reveal" src="images/partners/21-tabiji.jpg" alt="Tabiji" loading="lazy">
+    <img class="reveal" src="images/partners/22-snocream.jpg" alt="Sno Cream" loading="lazy">
+    <img class="reveal" src="images/partners/23-sakaki.png" alt="Sakaki Izakaya" loading="lazy">
+    <img class="reveal" src="images/partners/24-xfile.png" alt="X-File" loading="lazy">
+    <img class="reveal" src="images/partners/25-galaxyx.jpg" alt="Galaxy X" loading="lazy">
   </div>
 </section>
 
@@ -1229,17 +1259,35 @@ ul { list-style: none; }
   });
 })();
 
-// === Scroll reveal via IntersectionObserver ===
+// === Dynamic scroll reveal — every element gets a DIFFERENT animation ===
 (function() {
-  const els = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver(function(entries) {
+  var types = ['reveal--up','reveal--left','reveal--right','reveal--scale','reveal--fade','reveal--tilt','reveal--down','reveal--blur','reveal--zoom','reveal--swing'];
+  var els = document.querySelectorAll('.reveal');
+  
+  // Assign different animation types to each reveal element
+  els.forEach(function(el, i) {
+    // Skip if already has a specific type class
+    var hasType = types.some(function(t) { return el.classList.contains(t); });
+    if (!hasType) {
+      // Cycle through types so no two adjacent elements have the same animation
+      el.classList.add(types[i % types.length]);
+    }
+  });
+  
+  // Add stagger delays to children within grid containers
+  document.querySelectorAll('.partners-grid img, .benefits__grid .benefits__item, .attribution__grid .attribution__card, .process__row').forEach(function(el, i) {
+    var delay = (i % 6) + 1;
+    el.style.transitionDelay = (delay * 0.08) + 's';
+  });
+  
+  var observer = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
   els.forEach(function(el) { observer.observe(el); });
 })();
 </script>
